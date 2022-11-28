@@ -8,6 +8,7 @@ import { ArrowRight } from "phosphor-react";
 
 function ProductGrid({ product }) {
   const [modalShow, setModalShow] = useState(false);
+
   return (
     <>
       <div className="images">

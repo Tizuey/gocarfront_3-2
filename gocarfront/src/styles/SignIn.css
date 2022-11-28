@@ -81,7 +81,6 @@ body {
     overflow-x: hidden;
 }
 
-
 @media(max-width: 480px){
     .btn_login{
         width: 30vw;

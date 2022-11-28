@@ -44,8 +44,6 @@ input{
     padding: 10px;
 }
 
-
-
 @media(max-width: 768px){
     .user_name{
         display: block;
@@ -66,7 +64,6 @@ input{
 }
 
 @media(max-width: 480px){
-
     .signup{
         margin-top: 10vh;
     }

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import BookingUserData from "../Booking_UserData";
 import BookingDetails from "../Booking_Details";
 import BookingCalendar from "../Booking_Calendar";
 import BookingTimeBlock from "../Booking_TimeBlock";
 
+import { useParams } from "react-router-dom";
+
 import { Container } from "react-bootstrap";
 
 function BookingForm({ products }) {
-
   const userID = localStorage.getItem("userID");
+
   const { id } = useParams();
 
   const [form, setForm] = useState({
@@ -35,7 +36,6 @@ function BookingForm({ products }) {
         headers: {
           Accept: "*/* , application/json, text/plain ",
           "Content-Type": "application/json",
-          // "authorization": `${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           initialTime: form.time,
@@ -63,6 +63,7 @@ function BookingForm({ products }) {
   }
 
   const [isMobile, setIsMobile] = useState(false);
+
   //Mudança de estado de acordo com o tamanho da tela
   useEffect(() => {
     const media = window.matchMedia("(min-width: 1025px)");

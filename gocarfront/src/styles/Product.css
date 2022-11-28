@@ -5,22 +5,15 @@
     overflow-x: hidden;
 }
 
-body {
-    /* min-height: 200vh; */
-}
-
 .section{
     /* min-height: 230vh; */
     overflow: hidden;
 }
 
-
 h1, h2, h3, h4, h5{
     overflow: hidden;
     /* margin-left: 1%; */
-} 
-
-
+}
 
 .icons_div{
     display: flex;
@@ -28,8 +21,6 @@ h1, h2, h3, h4, h5{
     gap: 15px;
 }
 
-
 .slider_slick_mobile{
     overflow-y: hidden;
 }
-

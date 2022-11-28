@@ -1,10 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
-
-import { Context } from "../../../Context/Context";
+import React from "react";
 
 import { useFormik } from "formik";
 
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -39,27 +37,25 @@ const SignInForm = () => {
         headers: {
           Accept: "*/* , application/json, text/plain ",
           "Content-Type": "application/json",
-          // "authorization": `${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           username: `${values.email}`,
           password: `${values.password}`,
         }),
       }).then((res) => {
-        console.log("Esse é o res :",res);
         if (!res.ok) {
           throw Error(res.statusText);
         } else {
           res.json()
-          .then((data) => {
+            .then((data) => {
 
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("userID", data.id);
-            localStorage.setItem("name", data.name);  
-            localStorage.setItem("lastname", data.lastname);
-            localStorage.setItem("email", data.username);
-         
-          });
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("userID", data.id);
+              localStorage.setItem("name", data.name);
+              localStorage.setItem("lastname", data.lastname);
+              localStorage.setItem("email", data.username);
+
+            });
           setTimeout(() => {
             location.state
               ? (window.location.href = `${location.state}/reserve`)

@@ -103,12 +103,12 @@ h6 {
   align-self: center;
 }
 
-.show{
+.showcalendar{
   height: auto;
   animation: fade-in 0.7s ease-in;
 }
 
-.hide {
+.hiden {
   height: 0vh;
   animation: fade-out 0.7s ease-in;
 }
@@ -568,4 +568,5 @@ h6 {
   .box {
     width: fit-content;
   }
+
 }

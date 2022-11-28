@@ -39,6 +39,7 @@ const validate = (values) => {
 };
 
 const SignUpForm = () => {
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -57,7 +58,6 @@ const SignUpForm = () => {
         headers: {
           Accept: "*/* , application/json, text/plain ",
           "Content-Type": "application/json",
-          // "authorization": `${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           username: `${values.email}`,
@@ -65,20 +65,19 @@ const SignUpForm = () => {
           lastname: `${values.last_name}`,
           password: `${values.password}`,
           role: ["user"],
-
         }),
       }).then((res) => {
-        console.log("Esse é o res :",res);
         if (!res.ok) {
           throw Error(res.statusText);
         } else {
           setTimeout(() => {
-           (window.location.href = "/signin");
+            (window.location.href = "/signin");
           }, 0);
         }
       });
     },
   });
+
   return (
     <div>
       <form onSubmit={formik.handleSubmit} className="signup_form">

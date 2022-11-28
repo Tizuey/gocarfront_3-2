@@ -4,11 +4,11 @@ import { Context } from "../../Context/Context";
 
 import "./style.css";
 
-import { Card } from "react-bootstrap";
-
 import { useParams } from "react-router-dom";
 
-import { addDays, differenceInDays,eachDayOfInterval } from "date-fns";
+import { Card } from "react-bootstrap";
+
+import { addDays, differenceInDays, eachDayOfInterval } from "date-fns";
 
 import { DateRange } from "react-date-range";
 import * as locales from "react-date-range/dist/locale";
@@ -16,36 +16,25 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme
 
 function Calendar() {
-  const { calendar, setCalendar, setRent, productBookings, } = useContext(Context);
- 
+  const { productBookings, setRent, calendar, setCalendar } = useContext(Context);
+
   const { id } = useParams();
 
-
-
   const b = [];
-const a = productBookings?.map((reservas) => {
-  
-    let c =[];
-      if (reservas?.product?.id == id){
-        c = eachDayOfInterval({
-          start: new Date(reservas?.initalDay), 
-          end:   new Date(reservas?.finalDay)
-          })
-      }
- 
-
-        
-        for(let i = 0; i<c.length; i++){
-          b.push(c[i])
-        }
-          
-          
-
-
+  const a = productBookings?.map((reservas) => {
+    let c = [];
+    if (reservas?.product?.id == id) {
+      c = eachDayOfInterval({
+        start: new Date(reservas?.initalDay),
+        end: new Date(reservas?.finalDay)
+      })
+    }
+    for (let i = 0; i < c.length; i++) {
+      b.push(c[i])
+    }
   });
 
 
-console.log("eu consegui graças a deus", b)
 
   setRent(differenceInDays(calendar[0].endDate, calendar[0].startDate));
 
@@ -58,8 +47,6 @@ console.log("eu consegui graças a deus", b)
 
     return () => window.removeEventListener("resize", listener);
   }, [months]);
-
-  console.log(calendar);
 
   return (
     <>

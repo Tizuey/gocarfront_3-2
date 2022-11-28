@@ -4,6 +4,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 function ProductCarousel({ product }) {
+
   const productImages = product?.map((prodImages) => {
     return prodImages?.urlImage;
   });

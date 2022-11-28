@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-
-import { Context } from "../Context/Context";
+import React from "react";
 
 import ContextProvider from "../Context/Context";
 
@@ -14,18 +12,10 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Footer from "../components/Footer";
 
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const RouteList = () => {
   const usuarioLogado = localStorage.getItem("token");
-
-  const { dataUser, products } = useContext(Context);
-
-  const { id } = useParams();
-
-  const selectedProduct = products?.find((product) => product?.id == id);
-
-  console.log(dataUser)
 
   return (
     <>
@@ -35,7 +25,7 @@ const RouteList = () => {
             {usuarioLogado ? (
               <SecondaryHeader />
             ) : (
-              <MainHeader product={selectedProduct}/>
+              <MainHeader />
             )}
           </header>
 

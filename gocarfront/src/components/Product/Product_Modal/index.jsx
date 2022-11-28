@@ -14,6 +14,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 function ProductModal(props) {
   const { products } = useContext(Context);
   const { id } = useParams();
+
   const selectedProduct = products?.find((product) => product?.id == id);
 
   const productImage = props.products.map((prodImages) => {

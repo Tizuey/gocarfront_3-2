@@ -20,8 +20,8 @@ const name = localStorage.getItem('name');
 const lastname = localStorage.getItem('lastname');
 const email = localStorage.getItem('email');
 
-
 const BookingUserData = ({ form, setCity }) => {
+
   const formik = useFormik({
     initialValues: {
       name: `${name}`,
@@ -38,7 +38,6 @@ const BookingUserData = ({ form, setCity }) => {
       city: formik.values.city,
     });
   }, [formik.values.city]);
-
 
   return (
     <>

@@ -66,6 +66,7 @@ function Product() {
         <ProductCalendar product={selectedProduct} />
 
         <Policies />
+
       </section>
     </>
   );

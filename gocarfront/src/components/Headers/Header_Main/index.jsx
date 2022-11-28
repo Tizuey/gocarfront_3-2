@@ -12,15 +12,14 @@ import {
   Button,
 } from "react-bootstrap";
 
-function MainHeader({ product }) {
+function MainHeader() {
   const location = useLocation();
+
   const [path, setPath] = useState(location.pathname);
 
   useEffect(() => {
     setPath(location.pathname);
   }, [location.pathname]);
-
-  console.log(product);
 
   return (
     <>

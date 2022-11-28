@@ -3,8 +3,6 @@ import React, { createContext, useState, useEffect } from "react";
 export const Context = createContext({});
 
 const ContextProvider = ({ children }) => {
-  const [dataUser, setDataUser] = useState({});
-
   const [categories, setCategories] = useState([]);
   const [cities, setCities] = useState([]);
   const [products, setProducts] = useState([]);
@@ -68,8 +66,6 @@ const ContextProvider = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        dataUser,
-        setDataUser,
         categories,
         setCategories,
         cities,

@@ -15,6 +15,7 @@ import { Container } from "react-bootstrap";
 function Booking() {
   const { products } = useContext(Context);
   const { id } = useParams();
+  
   const selectedProduct = products?.find((product) => product?.id == id);
 
   useEffect(() => {

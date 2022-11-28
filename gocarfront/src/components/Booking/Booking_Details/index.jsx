@@ -14,8 +14,10 @@ import { MapPin } from "phosphor-react";
 
 function BookingDetails({ product, form, setDate, submit }) {
   const { calendar, products, productImages } = useContext(Context);
-  const { id } = useParams();
   const ids = [43, 37, 31, 13, 25, 19, 7, 1];
+
+  const { id } = useParams();
+
   const images = productImages?.filter((url) => ids.includes(url.id));
 
   let selectedProduct = products.map((cars) => {
@@ -31,6 +33,7 @@ function BookingDetails({ product, form, setDate, submit }) {
     }
   });
 
+  // Para visualização do usuário
   const startDate = calendar?.map((date) => {
     return format(date?.startDate, "dd/MM/yyyy");
   });
