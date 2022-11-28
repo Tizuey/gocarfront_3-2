@@ -16,13 +16,18 @@ const validate = (values) => {
   return errors;
 };
 
+const name = localStorage.getItem('name');
+const lastname = localStorage.getItem('lastname');
+const email = localStorage.getItem('email');
+
+
 const BookingUserData = ({ form, setCity }) => {
   const formik = useFormik({
     initialValues: {
-      name: "Teste (Dado virá da API)",
-      last_name: "Teste (Dado virá da API)",
-      email: "Teste (Dado virá da API)",
-      city:" " ,
+      name: `${name}`,
+      last_name: `${lastname}`,
+      email: `${email}`,
+      city: " ",
     },
     validate,
   });

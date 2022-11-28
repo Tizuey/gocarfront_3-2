@@ -86,12 +86,12 @@ h6 {
 
 .box {
   width: 50vw;
-  height: auto;
+  height: 0vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: fade-in 0.7s ease-in;
+  /* animation: fade-in 0.7s ease-in; */
 }
 
 .seta {
@@ -103,13 +103,13 @@ h6 {
   align-self: center;
 }
 
-.hide {
-  height: 0vh;
-  animation: fade-out 0.7s ease-in;
+.show{
+  height: auto;
+  animation: fade-in 0.7s ease-in;
 }
 
-.hide #now {
-
+.hide {
+  height: 0vh;
   animation: fade-out 0.7s ease-in;
 }
 
@@ -127,7 +127,7 @@ h6 {
 @keyframes fade-out {
   0% {
     opacity: 1;
-    height: 60vh;
+    height: auto;
   }
   100% {
     opacity: 0;

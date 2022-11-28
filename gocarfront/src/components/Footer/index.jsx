@@ -21,20 +21,20 @@ function Footer() {
         <div className="footer_copyrights">©2022 GoCar</div>
         <div className="footer_social_media">
           <div>
-            {/* <FacebookLogo size={36} /> */}
+            <FacebookLogo size={36} />
             <img src={Facebook} alt="" />
           </div>
           <div>
-            {/* <LinkedinLogo size={36} /> */}
+            <LinkedinLogo size={36} />
             <img src={LinkedIn} alt="" />
           </div>
           <div>
-            {/* <TwitterLogo size={36} /> */}
+            <TwitterLogo size={36} />
             <img src={Twitter} alt="" />
           </div>
           <div>
             <a href="https://www.instagram.com/rent.gocar/">
-              {/* <InstagramLogo size={36} /> */}
+              <InstagramLogo size={36} />
               <img src={Instagram} alt="" />
             </a>
           </div>

@@ -24,33 +24,6 @@ function MainHeader({ product }) {
 
   return (
     <>
-      {/* <header>
-                <Navbar>
-                    <Container fluid>
-                        <Navbar.Brand>
-                            <Link to="/">
-                                <img
-                                    src={Logo}
-                                    width="100"
-                                    height="30"
-                                    className="align-top ml-4"
-                                    alt="LOGO"
-                                />
-                            </Link>
-                        </Navbar.Brand>
-                    </Container>
-
-                    <ButtonGroup className='md-4' style={{ width: "70vw", display: "flex" }}>
-                        <Link to="/login" >
-                            {path !== "/login" ? <Button className='me-3 rounded' variant='outline-success' style={{ width: "19vw"}}> Login </Button> : ''}
-                        </Link>
-                        <Link to="/signup">
-                            {path !== "/signup" ? <Button className='me-3 rounded' variant='outline-primary' style={{ width: "19vw"}}> Cadastre-se </Button> : ''}
-                        </Link>
-                    </ButtonGroup>
-                </Navbar>
-            </header> */}
-
       {["sm"].map((expand) => (
         <Navbar key={expand} expand={expand} className="mb-3">
           <Container fluid>
@@ -118,22 +91,6 @@ function MainHeader({ product }) {
                       ""
                     )}
                   </Link>
-
-                  {/* && path.includes(`/reserve/signin`) */}
-
-                  {/* <Link to="/signup">
-                      {path.includes(`/reserve/signin`) ? (
-                        <Button
-                          className="me-3 rounded btn_side"
-                          variant="outline-primary"
-                        >
-                          {" "}
-                          Cadastre-se{" "}
-                        </Button>
-                      ) : (
-                        ""
-                      )}
-                    </Link> */}
                 </ButtonGroup>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

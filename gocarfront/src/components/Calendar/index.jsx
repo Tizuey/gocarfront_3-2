@@ -6,6 +6,8 @@ import "./style.css";
 
 import { Card } from "react-bootstrap";
 
+import { useParams } from "react-router-dom";
+
 import { addDays, differenceInDays,eachDayOfInterval } from "date-fns";
 
 import { DateRange } from "react-date-range";
@@ -15,14 +17,23 @@ import "react-date-range/dist/theme/default.css"; // theme
 
 function Calendar() {
   const { calendar, setCalendar, setRent, productBookings, } = useContext(Context);
+ 
+  const { id } = useParams();
+
+
 
   const b = [];
 const a = productBookings?.map((reservas) => {
-     
-        const c = eachDayOfInterval({
-          start: new Date(reservas.initalDay), 
-          end:   new Date(reservas.finalDay)
+  
+    let c =[];
+      if (reservas?.product?.id == id){
+        c = eachDayOfInterval({
+          start: new Date(reservas?.initalDay), 
+          end:   new Date(reservas?.finalDay)
           })
+      }
+ 
+
         
         for(let i = 0; i<c.length; i++){
           b.push(c[i])

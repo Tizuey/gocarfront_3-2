@@ -1,37 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import BookingUserData from "../Booking_UserData";
 import BookingDetails from "../Booking_Details";
 import BookingCalendar from "../Booking_Calendar";
 import BookingTimeBlock from "../Booking_TimeBlock";
 
-import { useFormik } from "formik";
-
 import { Container } from "react-bootstrap";
 
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.city) {
-    errors.city = "Obrigatório";
-  }
-
-  if (!values.checkin) {
-    errors.checkin = "Obrigatório";
-  }
-
-  if (!values.checkout) {
-    errors.checkout = "Obrigatório";
-  }
-
-  if (!values.time) {
-    errors.time = "Obrigatório";
-  }
-
-  return errors;
-};
-
 function BookingForm({ products }) {
+
+  const userID = localStorage.getItem("userID");
+  const { id } = useParams();
+
+  const [form, setForm] = useState({
+    city: "",
+    checkin: "",
+    checkout: "",
+    time: "",
+  });
 
   function submit() {
     console.log("Chamada da função");
@@ -43,34 +30,37 @@ function BookingForm({ products }) {
     ) {
       alert("Preencha todos os dados...");
     } else {
-      window.location.href = "/reserve-done";
+      fetch(`http://54.159.110.183:8081/bookings`, {
+        method: "POST",
+        headers: {
+          Accept: "*/* , application/json, text/plain ",
+          "Content-Type": "application/json",
+          // "authorization": `${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          initialTime: form.time,
+          initalDay: form.checkin,
+          finalDay: form.checkout,
+          product: {
+            id: `${id}`
+          },
+          user: {
+            id: `${userID}`
+          }
+
+        }),
+      }).then((res) => {
+        if (!res.ok) {
+          throw Error(res.statusText);
+          alert("Error de reserva");
+        } else {
+          setTimeout(() => {
+            (window.location.href = "/reserve-done");
+          }, 0);
+        }
+      });
     }
   }
-
-  // window.location.href = "/reserve-done";
-
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      last_name: "",
-      email: "",
-      city: "",
-      checkin: "",
-      checkout: "",
-      time: "",
-    },
-    validate,
-    onSubmit: (values) => {
-      window.location.href = "/reserve-done";
-    },
-  });
-
-  const [form, setForm] = useState({
-    city: "",
-    checkin: "",
-    checkout: "",
-    time: "",
-  });
 
   const [isMobile, setIsMobile] = useState(false);
   //Mudança de estado de acordo com o tamanho da tela
@@ -85,25 +75,24 @@ function BookingForm({ products }) {
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
       {isMobile ? (
-          <Container fluid className="booking_container">
-            <div className="booking_form_title">
-              <h1>Complete seus dados</h1>
-            </div>
+        <Container fluid className="booking_container">
+          <div className="booking_form_title">
+            <h1>Complete seus dados</h1>
+          </div>
 
-            <BookingUserData form={form} setCity={setForm} />
-            <BookingDetails
-              products={products}
-              form={form}
-              setDate={setForm}
-              submit={submit}
-            />
-            <BookingCalendar />
-            <BookingTimeBlock form={form} setTime={setForm} />
-         </Container>
-        ) : (
-          <Container fluid className="booking_container">
+          <BookingUserData form={form} setCity={setForm} />
+          <BookingDetails
+            product={products}
+            form={form}
+            setDate={setForm}
+            submit={submit}
+          />
+          <BookingCalendar />
+          <BookingTimeBlock form={form} setTime={setForm} />
+        </Container>
+      ) : (
+        <Container fluid className="booking_container">
           <div className="booking_form_title">
             <h1>Complete seus dados</h1>
           </div>
@@ -121,10 +110,7 @@ function BookingForm({ products }) {
             submit={submit}
           />
         </Container>
-        )}
-
-        
-      </form>
+      )}
     </>
   );
 }

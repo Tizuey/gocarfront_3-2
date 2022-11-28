@@ -34,3 +34,17 @@
     border: none;
     border-radius: 6px;
 }
+
+@media  (max-width:767px){
+    .booking_done_title{
+        text-align: center;
+        color: #f48240;
+    }
+
+    .booking_done_description{
+        font-size: large;
+        text-align: center;
+    }
+  
+
+}

@@ -24,18 +24,12 @@ function BookingDetails({ product, form, setDate, submit }) {
     return { ...cars, urlImage: fotos?.urlImage };
   });
 
-  const index = id -1 ; 
+  const index = id - 1;
   const selectedImage = selectedProduct?.map((product) => {
-    if(product.id == id) {
+    if (product.id == id) {
       return product.urlImage;
     }
   });
-
-  // const image = selectedImage?.filter((carsImage) => carsImage.includes(carsImage.id==id));
-
-  console.log("selectedImage =", selectedImage[index], index);
-  // console.log(image);
-
 
   const startDate = calendar?.map((date) => {
     return format(date?.startDate, "dd/MM/yyyy");
@@ -48,17 +42,25 @@ function BookingDetails({ product, form, setDate, submit }) {
   const newFormatStartDate = startDate[0];
   const newFormatEndDate = endDate[0];
 
+  // Para lançar no api
+  const initalDay = calendar?.map((date) => {
+    return format(date.startDate, "MM/dd/yyyy");
+  });
 
+  const finalDay = calendar?.map((date) => {
+    return format(date.endDate, "MM/dd/yyyy");
+  });
+
+  const formatApiInitalDay = initalDay[0];
+  const formatApiFinalDay = finalDay[0];
 
   useEffect(() => {
     setDate({
       ...form,
-      checkin: newFormatStartDate,
-      checkout: newFormatEndDate,
+      checkin: formatApiInitalDay,
+      checkout: formatApiFinalDay,
     });
   }, [newFormatStartDate, newFormatEndDate]);
-
-  // console.log("Aqui é a cidade:", product.name);
 
   return (
     <>
@@ -69,12 +71,12 @@ function BookingDetails({ product, form, setDate, submit }) {
           </div>
 
           <div className="booking_details_card_image">
-  
+
             <img
               src={selectedImage[index]}
               alt=""
             />
-       
+
           </div>
 
           <Container fluid className="booking_details_info_container">

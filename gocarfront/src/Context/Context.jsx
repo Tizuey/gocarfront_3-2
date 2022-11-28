@@ -11,8 +11,6 @@ const ContextProvider = ({ children }) => {
   const [productImages, setProductImages] = useState([]);
   const [productBookings, setProductBookings] = useState([]);
 
-  // const [carsImage, setCarsImage] = useState([]);
-
   const [calendar, setCalendar] = useState([
     {
       startDate: new Date(),
@@ -67,50 +65,6 @@ const ContextProvider = ({ children }) => {
         } );      
   }, []);
 
-  // useEffect(() => {
-  //   fetch(urlImages)
-  //     .then((responseCars) => responseCars.json())
-  //     .then((carsJSON) => {
-  //       const images = carsJSON.map((car) => {
-  //         // const imagens = car.images.map(imagem => {
-  //         //   return {
-  //         //     original: imagem,
-  //         //     thumbnail: imagem
-  //         //   }
-  //         // })
-
-  //         // return (
-  //         //   car.urlImage
-  //         // )
-
-  //         return {
-  //           ...car,
-  //           images: [
-  //             {
-  //               original: car.urlImage,
-  //               thumbnail: car.urlImage,
-  //             },
-  //             {
-  //               original: car.urlImage,
-  //               thumbnail: car.urlImage,
-  //             },
-  //             {
-  //               original: car.urlImage,
-  //               thumbnail: car.urlImage,
-  //             },
-  //             {
-  //               original: car.urlImage,
-  //               thumbnail: car.urlImage,
-  //             },
-  //           ],
-  //         };
-  //       });
-
-  //       // console.log(images);
-  //       setCarsImage(images);
-  //     });
-  // }, []);
-
   return (
     <Context.Provider
       value={{
@@ -126,8 +80,6 @@ const ContextProvider = ({ children }) => {
         setProductImages,
         productBookings,
         setProductBookings,
-        // carsImage,
-        // setCarsImage,
         calendar,
         setCalendar,
         rent,

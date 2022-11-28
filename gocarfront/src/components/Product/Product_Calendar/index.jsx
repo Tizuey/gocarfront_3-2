@@ -13,11 +13,9 @@ import { Link, useLocation } from "react-router-dom";
 function ProductCalendar({ product }) {
   const { rent } = useContext(Context);
   const result = rent * 300;
-  const usuarioLogado = localStorage.getItem("name");
+  const usuarioLogado = localStorage.getItem("token");
   
-
   const location = useLocation();
-
 
   return (
     <>
@@ -57,7 +55,7 @@ function ProductCalendar({ product }) {
                 >
                   <button className="reserva-btn">Alugue Agora</button>
                 </Link>
-                // `/product/${product?.id}/reserve/signin`
+    
               )}
             </div>
           </div>

@@ -24,14 +24,8 @@ const validate = (values) => {
 
 const email = localStorage.getItem('email') == null ? "" : localStorage.getItem('email');
 
-
 const SignInForm = () => {
-  const {  carsProducts } = useContext(Context);
-  
   const location = useLocation();
-  const { id } = useParams();
-
-  const selectedProduct = carsProducts?.find((product) => product?.id == id);
 
   const formik = useFormik({
     initialValues: {
@@ -65,19 +59,16 @@ const SignInForm = () => {
             localStorage.setItem("lastname", data.lastname);
             localStorage.setItem("email", data.username);
          
-
           });
           setTimeout(() => {
             location.state
-              ? (window.location.href = `/product/${selectedProduct}/reserve`)
+              ? (window.location.href = `${location.state}/reserve`)
               : (window.location.href = "/");
           }, 0);
         }
       });
     },
   });
-
-
 
   return (
     <div>

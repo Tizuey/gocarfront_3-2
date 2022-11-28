@@ -8,10 +8,6 @@ import { CalendarPlus, ArrowCircleUp } from "phosphor-react";
 
 function HomeSearchBlock() {
   const [expand, setExpand] = useState(false);
-  const [notnow, setNow] = useState(false);
-
- 
-  
 
   function showCalendar() {
     setExpand(!expand);
@@ -42,7 +38,7 @@ function HomeSearchBlock() {
         </div>
       </div>
 
-      <Container id="now" fluid className={`box ${expand ? " " : "hide"}`}>
+      <Container  fluid className={`box ${expand ? "show" : "hide"}`}>
         <div  className="seta" onClick={showCalendar}>
           <ArrowCircleUp size={45} />
         </div>
